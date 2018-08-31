@@ -15,19 +15,18 @@ while line != "":
 	data_list=[]
 	callsign = line[7]
 	data = pd.DataFrame(columns=col)
+	
 	while ((line[7] == callsign)):
 		data_list.append(line)
-		#sub_data = pd.DataFrame(data_list, columns=col)
-		#data = data.append(sub_data, ignore_index=True)
-		#data_list=[]
 		line = file.readline()
 		line = [x.strip(' ') for x in line.split('|')][1:-1]
 		if (line==[]):
 			for i in range (4):
 				line = file.readline()
-				line = [x.strip(' ') for x in line.split('|')][1:-1]
-			print('Change table')
-
+				if (line == ""):
+					break;
+				else: 
+					line = [x.strip(' ') for x in line.split('|')][1:-1]
 		
 	data = pd.DataFrame(data_list,columns=col)
 	for name in ['lat', 'lon','velocity','heading','vertrate','baroaltitude','geoaltitude','lastposupdate','lastcontact']:
@@ -35,12 +34,12 @@ while line != "":
 	
 	coor=data.loc[:,['lat','lon','geoaltitude']]
 	coor=coor.dropna(how='any')
-	if (callsign=="NULL"):
-		callsign = ('N{}'.format(count_null))
-		count_null = count_null+1
-	coor.to_csv('../coordinate/{}.csv'.format(callsign), index=False)
-	print('{} fine'.format(callsign))
-	
-	
+	if (len(coor)>0):
+		if (callsign=="NULL"):
+			callsign = ('{}-N{}'.format(line[7], count_null))
+			count_null = count_null+1
+		
+		coor.to_csv('../coordinate/{}.csv'.format(callsign), index=False)
+		print('{} fine'.format(callsign))
 	
 file.close()
