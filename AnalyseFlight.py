@@ -11,7 +11,7 @@ line = file.readline()
 line = [x.strip(' ') for x in line.split('|')][1:-1]
 count_null = 0
 
-while line != "":
+while True:
 	data_list=[]
 	callsign = line[7]
 	data = pd.DataFrame(columns=col)
@@ -27,13 +27,15 @@ while line != "":
 					break;
 				else: 
 					line = [x.strip(' ') for x in line.split('|')][1:-1]
-		
+	if ("" == line):
+		break
 	data = pd.DataFrame(data_list,columns=col)
 	for name in ['lat', 'lon','velocity','heading','vertrate','baroaltitude','geoaltitude','lastposupdate','lastcontact']:
 		data[name] = pd.to_numeric(data[name], errors='coerce')
 	
 	coor=data.loc[:,['lat','lon','geoaltitude']]
 	coor=coor.dropna(how='any')
+	coor=coor.drop_duplicates()
 	if (len(coor)>0):
 		if (callsign=="NULL"):
 			callsign = ('{}-N{}'.format(line[7], count_null))
