@@ -66,6 +66,7 @@ try:
 	#arcpy.AddMessage("Create {}.shp".format(tracking))
 	#arcpy.SetParameter(2, layer)
 	
+	"""
 	arcpy.SetProgressorLabel("Adding tracking layer")
 	mypath = r"Users\Hong\Documents\ArcGIS\ADS-B\map.mxd"
 	mxd = arcpy.mapping.MapDocument(mypath)
@@ -77,6 +78,7 @@ try:
 	mxd.save()
 	x = os.startfile(mypath)
 	arcpy.SetProgressorPosition()
+	"""
 except Exception:
 	e = sys.exc_info()[1]
 	arcpy.AddError(e.args[0])
