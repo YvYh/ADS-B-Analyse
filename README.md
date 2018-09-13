@@ -1,10 +1,8 @@
-# ADS-B-Analyse
-Analyse ADS-B log document
+# ADS-B-Analyse  
+  Python scripts to analyse **ADS-B data**  
+  **ArcGIS** used  
+  Data is collected through **Opensky API**  
 
-- Re-organize ADS-B log file  
-- Pick-up coordinate infomation  
-- Add each flight's itineary into ArcGis  
-- **ArcGIS** tool allows create layer from csv file then [manually] change it to a tracking layer  
 
 ## Python script  
 #### `Analyse`: 
@@ -15,6 +13,8 @@ Analyse ADS-B log document
 - split ADS-B log by flight callsigh  
 - save each flight log into csv file
 
+#### `time_transfer`:  
+- transfer time field into readable date type  
 
 ## ArcGIS Tool  
 #### `CsvToLayer`:  
@@ -34,4 +34,9 @@ Analyse ADS-B log document
 
 #### `Update_province`: 
 - update province name for region-map  
+
+#### `Flight_count`:  
+- select the region which will be analyse  
+- count flight and data number within this region in selected shapefile(ADS-B data)  
+- add thie record into ATF_count table
 
