@@ -21,7 +21,7 @@
 
 ### *How to use?*  
 Open **ArcMap** -> choose your map -> **Geoprocessing** -> **ArcToolbox** ->  
-Choose one toolbox (*preinstalled is ADS-B*) -> right click -> **Add** -> **Script ** 
+Choose one toolbox (*preinstalled is ADS-B*) -> right click -> **Add** -> **Script**   
 
 #### `CsvToLayer`:  
 - convert ADS-B data csv file to arcgis feature layer  
