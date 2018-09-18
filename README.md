@@ -3,22 +3,28 @@
   **ArcGIS** used  
   Data is collected through **Opensky API**  
 
+	Bofore use all scripts, please pay attention to the file paths used(usually the path of output file)  
 
-## Python script  
+## Python script   
 #### `Analyse`: 
 - organize ADS-B log file into csv file  
 - allow to show its itinerary  
 
 #### `AnalyseFlight`:  
-- split ADS-B log by flight callsigh  
+- split ADS-B log by flight callsign  
 - save each flight log into csv file
 
 #### `time_transfer`:  
 - transfer time field into readable date type  
 
 ## ArcGIS Tool  
+
+	###*How to use?*  
+	Open **ArcMap** -> choose your map -> **Geoprocessing** -> **ArcToolbox** ->  
+	Choose one toolbox*preinstalled is ADS-B* -> right click -> Add -> Script  
+
 #### `CsvToLayer`:  
-- *convert* ADS-B data csv file to arcgis feature layer  
+- convert ADS-B data csv file to arcgis feature layer  
 
 #### `real-timeADS-B`:  
 - collect real-time ADS-B data within the selected zone via Opensky API  
@@ -33,10 +39,10 @@
 - apply the fixed symbology  
 
 #### `Update_province`: 
-- update province name for region-map  
+- update province name-list for region-map  
 
 #### `Flight_count`:  
-- select the region which will be analyse  
-- count flight and data number within this region in selected shapefile(ADS-B data)  
+- select the region which will be analysed  
+- count flight and data number within the selected region (ADS-B data)  
 - add thie record into ATF_count table
 
