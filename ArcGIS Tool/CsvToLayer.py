@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+# ---------------------------------------------------------------------------
+# Transfer csv file(splited from long-term log file) to shp file
+# Created by Yvonne Yu
+# ---------------------------------------------------------------------------
+
+
 import arcpy
 from datetime import datetime
 import pandas as pd
@@ -14,16 +21,16 @@ def transfer_time(callsign):
 def shp(name):
 	return "{}.shp".format(name)
 
-#To do: Input 
+
 #callsign="CXA817"
 callsign = arcpy.GetParameterAsText(0)
 csvfile=transfer_time(callsign)
+#csvfile = arcpy.GetParameterAsText(0)
 workspace=r"C:\Users\Hong\Documents\ArcGIS\ADS-B"
 arcpy.env.workspace=workspace
 arcpy.MakeXYEventLayer_management(str(csvfile),"lon","lat",callsign)
-arcpy.FeatureClassToShapefile_conversion(callsign,workspace)
+arcpy.FeatureClassToShapefile_conversion(callsign,workspace+"\shp")
 arcpy.MakeFeatureLayer_management(shp(callsign),callsign)
 arcpy.CheckOutExtension("tracking")
 trackingLayer="{}T".format(callsign)
 arcpy.MakeTrackingLayer_ta(callsign,trackingLayer,"","NOT_ADJUSTED_FOR_DST","COPY_ALL_TO_MEMORY","time","yyyy-MM-dd HH:mm:ss")
-#arcpy.FeatureClassToShapefile_conversion(trackingLayer,workspace)
