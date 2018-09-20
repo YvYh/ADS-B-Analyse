@@ -63,8 +63,9 @@
                 </tbody>
             </table>
         </div>
+        <div id="table"></div>
     </div>
-    <div id="container" class="map" tabindex="0"></div>
+    <div id="map" class="map" tabindex="0"></div>
     <script language="javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=&plugin=Map3D,AMap.DistrictLayer,AMap.Scale,AMap.ToolBar"></script>
     <script type="text/javascript">
         var SOC = 'CHN'
@@ -112,6 +113,12 @@
 
         }
 
+        var txt=""
+        for (x in ATF){
+            txt = txt + ATF[x];
+        }
+        document.getElementById("table").innerHTML = txt;
+
         var getColorByATF = function (adcode) {
             if (!colors[adcode]) {
                 var flow = ATF[Province[adcode]];
@@ -142,7 +149,7 @@
         })
 
 
-        var map = new AMap.Map("container", {
+        var map = new AMap.Map("map", {
             zooms: [3, 10],
             showIndoorMap: false,
             zoom: 3,
