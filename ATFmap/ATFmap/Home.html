@@ -13,10 +13,11 @@
             margin: 0px;
         }
         .map {
-            width: 90%;
-            height: 90%;
+            width: 80%;
+            height: 80%;
             margin: auto;
         }
+        
     </style>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
@@ -41,30 +42,29 @@
         <div class="row">
             <p class="center-block text-primary"> 12/09/2018 12:29:47 - 12/09/2018 13:38:20</p>
         </div>
-        <div class="row">
-            <table class="table">
+    </div>
+    <div>
+        <div class="col-md-2">
+            <table class="table col-md-2">
                 <thead>
                     <tr class="active">
-                        <th>SHANDONG</th>
-                        <th>FUJIAN</th>
-                        <th>SHANXI</th>
-                        <th>SHANGHAI</th>
-                        <th>ZHEJIANG</th>
+                        <th>Province</th>
+                        <th>Flight</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>8</td>
-                        <td>70</td>
-                        <td>64</td>
+                        <td>SHANGHAI</td>
                         <td>200</td>
-                        <td>550</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div id="table"></div>
+        <div class="col-md-10 col-md-pull-2">
+            
+        </div>
     </div>
+       
     <div id="map" class="map" tabindex="0"></div>
     <script language="javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=&plugin=Map3D,AMap.DistrictLayer,AMap.Scale,AMap.ToolBar"></script>
     <script type="text/javascript">
@@ -113,11 +113,8 @@
 
         }
 
-        var txt=""
-        for (x in ATF){
-            txt = txt + ATF[x];
-        }
-        document.getElementById("table").innerHTML = txt;
+        
+
 
         var getColorByATF = function (adcode) {
             if (!colors[adcode]) {
@@ -136,7 +133,7 @@
         var disCountry = new AMap.DistrictLayer.Country({
             zIndex: 10,
             SOC: 'CHN',
-            depth: 2,
+            depth: 1,
             styles: {
                 'nation-stroke': '#22ffff',
                 'coastline-stroke': [0.8, 0.63, 0.94, 1],
